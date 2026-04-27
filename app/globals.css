@@ -1,0 +1,176 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --surface: #0e1511;
+  --surface-dim: #09100c;
+  --surface-low: #161d19;
+  --surface-container: #1a211d;
+  --surface-high: #242c27;
+  --surface-highest: #2f3732;
+  --surface-bright: #333b36;
+  --surface-card: #1f1f1f;
+  --radius-card: 12px;
+  --shadow-card: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-card-hover: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --border-subtle: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+body {
+  background-color: var(--surface);
+  @apply text-gray-200 antialiased;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+a {
+  @apply text-emerald-400 hover:text-emerald-300 transition-colors;
+}
+
+/* V2 Card */
+.v2-card {
+  background-color: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: var(--border-subtle);
+  transition: transform 200ms ease, opacity 200ms ease, box-shadow 200ms ease;
+}
+.v2-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+.v2-card-static {
+  background-color: var(--surface-card);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  border: var(--border-subtle);
+}
+
+/* V2 Buttons */
+.btn-primary {
+  border-radius: var(--radius-card);
+  @apply bg-emerald-500 px-5 py-2.5 font-semibold text-white;
+  transition: transform 200ms ease, filter 200ms ease;
+}
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.1);
+}
+.btn-primary:disabled {
+  @apply cursor-not-allowed opacity-50;
+}
+
+.btn-secondary {
+  border-radius: var(--radius-card);
+  @apply px-5 py-2.5 text-white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: transparent;
+  transition: background 200ms ease, transform 200ms ease;
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-1px);
+}
+
+.btn-ghost {
+  @apply px-3 py-1.5 text-sm transition-colors;
+}
+.btn-ghost:hover {
+  @apply text-white;
+}
+
+/* V2 Input */
+.input {
+  background-color: var(--surface-low);
+  border-radius: var(--radius-card);
+  @apply w-full px-4 py-3 text-gray-200 placeholder:text-gray-500;
+  border: var(--border-subtle);
+  outline: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.15);
+}
+
+/* Step label */
+.step-label {
+  @apply font-display text-xs font-medium uppercase tracking-widest text-emerald-400;
+}
+
+/* Metric numbers */
+.metric-value {
+  @apply font-mono text-3xl font-bold tabular-nums;
+}
+
+/* Pill / Chip */
+.chip {
+  background-color: var(--surface-highest);
+  @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-sm text-gray-300;
+  border: var(--border-subtle);
+}
+
+/* Pill toggle */
+.pill-toggle {
+  @apply inline-flex rounded-full p-1 text-xs;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--surface);
+}
+.pill-toggle button {
+  @apply rounded-full px-3 py-1 transition-colors;
+}
+.pill-toggle button.active {
+  @apply bg-emerald-500 text-white;
+}
+.pill-toggle button:not(.active) {
+  @apply text-gray-400;
+}
+
+/* Table */
+.v2-table {
+  @apply w-full text-left text-sm;
+}
+.v2-table thead tr {
+  @apply text-gray-500;
+}
+.v2-table tbody tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+.v2-table tbody tr:hover {
+  background-color: var(--surface-container);
+}
+.v2-table th,
+.v2-table td {
+  @apply py-3 px-2;
+}
+.v2-table td {
+  @apply font-mono tabular-nums;
+}
+
+/* Verdict badges */
+.badge {
+  @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+}
+.badge-strong {
+  @apply bg-emerald-500/15 text-emerald-400;
+}
+.badge-moderate {
+  @apply bg-amber-500/15 text-amber-400;
+}
+.badge-weak {
+  @apply bg-red-500/15 text-red-400;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  background-color: var(--surface-bright);
+}
